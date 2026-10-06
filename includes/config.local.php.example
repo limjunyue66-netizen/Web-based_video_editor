@@ -1,0 +1,23 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Optional local overrides.
+ * Copy this file to includes/config.local.php and uncomment the values you need.
+ * config.local.php is loaded before the defaults, so defined constants win.
+ */
+
+// define('FFMPEG_PATH', 'C:/ffmpeg/bin/ffmpeg.exe');
+// define('FFPROBE_PATH', 'C:/ffmpeg/bin/ffprobe.exe');
+
+// cPanel / Linux
+// define('FFMPEG_PATH', '/usr/bin/ffmpeg');
+// define('FFPROBE_PATH', '/usr/bin/ffprobe');
+
+// define('MAX_VIDEO_SIZE', 512 * 1024 * 1024);
+// define('MAX_IMAGE_SIZE', 25 * 1024 * 1024);
+// define('MAX_AUDIO_SIZE', 80 * 1024 * 1024);
+
+// define('COMPOSITION_WIDTH', 1920);
+// define('COMPOSITION_HEIGHT', 1080);
+// define('COMPOSITION_FPS', 30);

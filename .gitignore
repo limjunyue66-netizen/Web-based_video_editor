@@ -1,0 +1,62 @@
+# Local overrides and secrets
+includes/config.local.php
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+
+# Runtime user data (keep folder structure + .htaccess only)
+uploads/*
+!uploads/.htaccess
+!uploads/videos/
+!uploads/images/
+!uploads/audio/
+!uploads/thumbs/
+!uploads/previews/
+!uploads/meta/
+uploads/videos/*
+!uploads/videos/.gitkeep
+uploads/images/*
+!uploads/images/.gitkeep
+uploads/audio/*
+!uploads/audio/.gitkeep
+uploads/thumbs/*
+!uploads/thumbs/.gitkeep
+uploads/previews/*
+!uploads/previews/.gitkeep
+uploads/meta/*
+!uploads/meta/.gitkeep
+
+exports/*
+!exports/.gitkeep
+!exports/jobs/
+exports/jobs/*
+!exports/jobs/.gitkeep
+
+logs/*
+!logs/.gitkeep
+
+# FFmpeg binaries (download separately; see README)
+bin/*.exe
+bin/*.dll
+bin/*.so
+
+# Desktop build / publish artifacts
+desktop/bin/
+desktop/obj/
+desktop/publish/
+desktop/onefile/
+desktop/small/
+desktop/*.user
+desktop/desktop-url.txt
+**/filter_flag.txt
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*~

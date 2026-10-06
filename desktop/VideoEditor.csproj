@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <RootNamespace>VideoEditor</RootNamespace>
+    <AssemblyName>VideoEditor</AssemblyName>
+    <Version>1.0.0</Version>
+    <Description>Portable Windows video editor</Description>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+    <Content Include="..\index.php" Link="index.php" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\assets\**\*" Link="assets\%(RecursiveDir)%(Filename)%(Extension)" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\bin\ffmpeg.exe" Link="bin\ffmpeg.exe" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <Content Include="..\bin\ffprobe.exe" Link="bin\ffprobe.exe" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+  </ItemGroup>
+  <Target Name="CopyEditorContent" AfterTargets="Publish">
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)..\index.php" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <EditorAsset Include="$(MSBuildThisFileDirectory)..\assets\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(EditorAsset)" DestinationFiles="@(EditorAsset->'$(PublishDir)assets\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)..\bin\ffmpeg.exe;$(MSBuildThisFileDirectory)..\bin\ffprobe.exe" DestinationFolder="$(PublishDir)bin" SkipUnchangedFiles="true" Condition="Exists('$(MSBuildThisFileDirectory)..\bin\ffmpeg.exe')" />
+  </Target>
+</Project>

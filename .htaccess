@@ -1,0 +1,12 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(?:includes|logs|bin|desktop)(?:/|$) - [F,L]
+    RewriteRule ^uploads/meta(?:/|$) - [F,L]
+    RewriteRule ^exports(?:/|$) - [F,L]
+</IfModule>
+
+<FilesMatch "(?i)\.(env|ini|log|bat|sh|md)$">
+    Require all denied
+</FilesMatch>
